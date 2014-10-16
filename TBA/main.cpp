@@ -45,5 +45,6 @@ std::string getRevisionDate(){
 
 	dateS = dd + "." + mm + "." + "20" + yyyy;
 
+
 	return dateS;
 }
