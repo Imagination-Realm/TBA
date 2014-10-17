@@ -27,10 +27,13 @@ std::string Level::getLevelName(){
 	return level_name;
 }
 
-void Level::setDescription(std::string description){
+void Level::addDescription(std::string description){
 
-	levelDescription = description;
-
+	if (levelDescription.size() > 0){
+		levelDescription.push_back("\n");
+	}
+	levelDescription.push_back(description);
+	
 }
 
 
@@ -98,15 +101,18 @@ void Level::showLevel(){
 		std::cout << "WARNING ! Title empty " << std::endl;
 	}
 
-	if (levelDescription != "" & levelDescription != " "){
+	if (levelDescription.size() != 0  && (levelDescription[0] != "" || levelDescription[0] != " ")){
 
 		std::string descriptionDelimitation = "";
 
 		for (int i = 0; i<80; i++){
 			descriptionDelimitation += "-";
 		}
-		std::cout << descriptionDelimitation << std::endl;
-		std::cout << levelDescription << std::endl;
+		std::cout << descriptionDelimitation ;
+		for (int i = 0; i < levelDescription.size(); i++){
+			std::cout << levelDescription[i];
+		}
+		std::cout << std::endl;
 		std::cout << descriptionDelimitation << std::endl;
 	}
 	else{

@@ -8,6 +8,7 @@ class Input
 public:
 
 	void CenterText(std::string text);
+	void centerBuildMessage(std::string text);
 	int consoleWidth();
 	void Input::insertCommand();
 	void e_print(std::string aString);

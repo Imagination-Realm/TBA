@@ -7,7 +7,7 @@ class Level
 {
 public:
 	Level(std::string levelName);
-	void setDescription(std::string description);
+	void addDescription(std::string description);
 	void setTitle(std::string title);
 	void showLevel();
 	void Level::addArgument(std::string argument);
@@ -15,7 +15,7 @@ public:
 	void Level::getArgList();
 	std::string Level::getLevelName();
 
-	std::string levelDescription;
+	std::vector<std::string> levelDescription;
 	std::string levelTitle;
 	std::vector<std::string> argumentsArray;
 	bool levelExists = false;

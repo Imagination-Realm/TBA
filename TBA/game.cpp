@@ -20,6 +20,7 @@ bool Game::gameRunning;
 
 Level *introductionLevel = new Level("introductionLevel");
 Level *levelOne = new Level("levelOne");
+Input input;
 
 void addCommands();
 
@@ -29,7 +30,7 @@ Game::Game(std::string gameTitle, std::string build, std::string release, std::s
 	//Version
 	Input input;
 	input.CenterText("===================================");
-	input.CenterText("====================" + build + " || " + release + " || " + stage + "====================");
+	input.centerBuildMessage("====================" + build + " || " + release + " || " + stage + "====================");
 	input.CenterText("===================================");
 	std::cout << std::endl;
 
@@ -46,22 +47,13 @@ Game::Game(std::string gameTitle, std::string build, std::string release, std::s
 
 void Game::run()
 {
-
+	init();
 	gameRunning = true;
 	addCommands(); // Adding game commands to the commands list to be displayed by 'help'
 
-	Input input;
-	
 	
 
-
-	introductionLevel->setTitle("Introduction");
-	introductionLevel->setDescription("This is the introduction section. We'll go over commands and general story here.For more commands write 'help' ");
-	introductionLevel->showLevel();
-	current_level = introductionLevel->getLevelName();
-
-	levelOne->setTitle("Level One");
-	levelOne->setDescription(" Testing level one description");
+	
 
 	//input.speechMode("Hi there !! What would you like to do next ?? ");
 
@@ -74,15 +66,15 @@ void Game::run()
 	//levelOne->showLevel();
 	//current_level = levelOne->getLevelName();
 
-
-
-
-
-
-
-
-
-
 }
 
+void Game::init(){
+	introductionLevel->setTitle("Introduction");
+	introductionLevel->addDescription(" This is the introduction section. Let's take a look at commands ...  ");
+	introductionLevel->addDescription("  go \"location\"   -  moves the player to another location ");
+	introductionLevel->showLevel();
+	current_level = introductionLevel->getLevelName();
 
+	levelOne->setTitle("Level One");
+	levelOne->addDescription(" Testing level one description");
+}

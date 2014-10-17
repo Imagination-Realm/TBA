@@ -10,6 +10,7 @@ class Game
 public:
 	Game(std::string gameTitle, std::string build, std::string release, std::string stage);
 	void run();
+	void init();
 
 	std::string gameTitle;
 	static std::vector<std::string> levelNames;

@@ -43,6 +43,13 @@ void Input::CenterText(std::string text)
 
 }
 
+void Input::centerBuildMessage(std::string text){
+	int lineLen = consoleWidth();  //Read the console width
+	int space = (lineLen + text.length()) / 2; // Compute number of spaces needed
+
+	std::cout << std::setw(space) << text ; // Align text left using the number of spaces and print text 
+}
+
 int Input::consoleWidth()
 {
 
