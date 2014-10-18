@@ -103,11 +103,12 @@ void Level::showLevel(){
 
 	if (levelDescription.size() != 0  && (levelDescription[0] != "" || levelDescription[0] != " ")){
 
-		std::string descriptionDelimitation = "";
+		std::string descriptionDelimitation = "+";
 
-		for (int i = 0; i<80; i++){
+		for (int i = 0; i<78; i++){
 			descriptionDelimitation += "-";
 		}
+		descriptionDelimitation += "+";
 		std::cout << descriptionDelimitation ;
 		for (int i = 0; i < levelDescription.size(); i++){
 			std::cout << levelDescription[i];

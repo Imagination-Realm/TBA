@@ -95,7 +95,7 @@ void Input::speechMode(char text[])
 //Reads user input from the console and shows output based on inserted commands
 void Input::insertCommand(){
 
-	std::cout << ">>";
+	std::cout << ">> ";
 	std::string line;
 	std::getline(std::cin, line);   //Used instead of std::cin because it only reads input from one line , instead of multiple lines. Allows for a better command management .
 	std::cout << std::endl;
