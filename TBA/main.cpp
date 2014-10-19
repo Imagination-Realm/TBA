@@ -10,7 +10,7 @@ int main()
 {
 	std::string date = getRevisionDate();
 
-	Game *something = new Game("PLACEHOLDER", "BUILD 0.2.1", date, "ALPHA STAGE");
+	Game *something = new Game("PLACEHOLDER", "BUILD 0.2.2", date, "ALPHA STAGE");
 	something->run();
 
 	return 0;

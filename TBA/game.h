@@ -16,6 +16,10 @@ public:
 	static std::vector<std::string> levelNames;
 	static std::string current_level;
 	static bool gameRunning;
+	static std::string buildName;
+	static std::string releaseName;
+	static std::string stageName;
+	static std::string gameName;
 
 
 

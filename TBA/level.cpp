@@ -110,7 +110,7 @@ void Level::showLevel(){
 		}
 		descriptionDelimitation += "+";
 		std::cout << descriptionDelimitation ;
-		for (int i = 0; i < levelDescription.size(); i++){
+		for (unsigned int i = 0; i < levelDescription.size(); i++){
 			std::cout << levelDescription[i];
 		}
 		std::cout << std::endl;

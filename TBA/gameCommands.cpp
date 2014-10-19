@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 #include "level.h"
+#include <stdlib.h>
+#include "input.h"
 
 std::vector<std::string> commands_list;
 extern Level *levelOne;
@@ -14,11 +16,12 @@ void exit(){
 //Command 'go'
 void go(std::vector<std::string> words){
 	
-	if (words.size() > 1 && words[1] == "levelone"){  //If vector 'words' is not empty and its second element is 'town' , then execute command  
+	if (words.size() > 1 && words[1] == "levelone"){  //If vector 'words' is not empty and its second or third element is 'town' , then execute command  
+		system("cls"); //Clears the console ... it's bad to use this one , but it should do the work for now
 		levelOne->showLevel();
 		Game::current_level = levelOne->getLevelName();
 	}
-	else { std::cout << "ERROR ! Missing or incorrect argument" << std::endl; }
+	else { std::cout << "ERROR ! Incorrect or missing argument" << std::endl; }
 }
 
 //Prints a list of available commands
@@ -41,6 +44,37 @@ void help(std::vector<std::string> words){
 	
 }
 
+void pick(std::vector<std::string> words){
+	if (words.size()>1 && words[1]=="leaf"){
+		std::cout << "Picking leaf" << std::endl;
+	}
+	else {
+		std::cout << "ERROR ! Incorrect or missing argument" << std::endl;
+	}
+}
+
+
+void main_menu(){
+	std::string build = Game::buildName;
+	std::string release = Game::releaseName;
+	std::string stage = Game::stageName;
+	std::string gameTitle = Game::gameName;
+
+	system("cls");
+
+	//Version
+	Input input;
+	input.CenterText("===================================");
+	input.centerBuildMessage("====================" + build + " || " + release + " || " + stage + "====================");
+	input.CenterText("===================================");
+	std::cout << std::endl;
+
+	//Welcome message
+	std::cout << "*****" << "Welcome to " << gameTitle << "*****" << std::endl;
+	std::cout << "*****" << "Follow the instructions and , most importantly ... enjoy your stay !" << "*****" << std::endl;
+	std::cout << std::endl;
+
+}
 
 //Checks whether a valid command has been inputted by the user 
 void check_command_validity(std::vector<std::string> words){
@@ -54,6 +88,12 @@ void check_command_validity(std::vector<std::string> words){
 	else if (words[0] == "help"){
 		help(words);
 	}
+	else if (words[0] == "pick"){
+		pick(words);
+	}
+	else if (words[0] == "menu"){
+		main_menu();
+	}
 	else if (words[0] != "") { std::cout << "Error ! Command invalid . Please type 'help' to check for available commands " << std::endl; }
 
 }
@@ -65,9 +105,11 @@ void addCommand(std::string command){
 
 //Calls addCommand for each command ... used to minimize code repetition and to ensure maintainability 
 void addCommands(){
-	addCommand("exit");
+
+	addCommand("menu");
+	addCommand("pick");
 	addCommand("go");
-	
+	addCommand("exit");
 }
 
 

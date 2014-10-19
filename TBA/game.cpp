@@ -17,6 +17,10 @@
 std::vector<std::string> Game::levelNames;
 std::string Game::current_level;
 bool Game::gameRunning;
+std::string Game::buildName;
+std::string Game::releaseName;
+std::string Game::stageName;
+std::string Game::gameName;
 
 Level *introductionLevel = new Level("introductionLevel");
 Level *levelOne = new Level("levelOne");
@@ -26,6 +30,10 @@ void addCommands();
 
 Game::Game(std::string gameTitle, std::string build, std::string release, std::string stage)
 {
+	buildName = build;
+	releaseName = release;
+	stageName = stage;
+	gameName = gameTitle;
 
 	//Version
 	Input input;
@@ -40,24 +48,22 @@ Game::Game(std::string gameTitle, std::string build, std::string release, std::s
 	std::cout << std::endl;
 
 
-
 }
 
 
 
 void Game::run()
 {
+	std::cout << "Press any key to continue... " << std::endl;
+	std::cin.get();
+	system("cls");
+
 	init();
 	gameRunning = true;
 	addCommands(); // Adding game commands to the commands list to be displayed by 'help'
 
-	
-
-	
-
 	//input.speechMode("Hi there !! What would you like to do next ?? ");
 
-	
 
 	while (gameRunning){ //While the game is running , keep receiving user input
 		input.insertCommand();
@@ -70,7 +76,7 @@ void Game::run()
 
 void Game::init(){
 	introductionLevel->setTitle("Introduction");
-	introductionLevel->addDescription(" This is the introduction section. Let's take a look at commands ...  ");
+	introductionLevel->addDescription(" This is the introduction section. Let's take a look at the basic commands..  ");
 	introductionLevel->addDescription("  go \"location\"   -  moves the player to another location ");
 	introductionLevel->showLevel();
 	current_level = introductionLevel->getLevelName();
